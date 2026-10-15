@@ -171,6 +171,7 @@ li { margin-bottom: 0.45em; }
 .hm-title { margin: 0 0 2px; font-size: 1.1rem; }
 .hm-sub { margin: 0 0 14px; color: var(--muted); font-size: 0.9rem; }
 .heatmap { display: grid; grid-template-columns: minmax(118px, 170px) repeat(var(--cols), minmax(0, 1fr)); gap: 2px; }
+.heatmap.cols-2 { max-width: 620px; }
 .hm-corner { }
 .hm-col { font-size: 0.82rem; font-weight: 700; color: var(--navy); text-align: center; padding: 4px 0 6px; align-self: end; }
 .hm-label {

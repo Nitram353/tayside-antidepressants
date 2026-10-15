@@ -93,16 +93,17 @@
     if (mode === 'age') return 'this age group';
     return i === 0 ? 'men' : 'women';
   }
+  function article(word) { return /^[aeiou]/i.test(word) ? 'an' : 'a'; }
   function sentence(mode, setting, i) {
     var rr = DATA[mode].rr[setting][i];
     var s = SETTINGS[setting];
     if (rr >= 0.85 && rr <= 1.1) {
-      return who(mode, i) + ' had a ' + s.noun + ' close to the Scottish rate for ' + groupNoun(mode, i) + ': ' + rr.toFixed(2) + ' times that rate.';
+      return who(mode, i) + ' had ' + article(s.noun) + ' ' + s.noun + ' close to the Scottish rate for ' + groupNoun(mode, i) + ': ' + rr.toFixed(2) + ' times that rate.';
     }
     if (rr > 1.1) {
       return who(mode, i) + ' had ' + rr.toFixed(2) + ' times the ' + s.noun + ' of ' + comparator(mode, i) + '.';
     }
-    return who(mode, i) + ' had a ' + s.noun + ' below the Scottish rate for ' + groupNoun(mode, i) + ': ' + rr.toFixed(2) + ' times that rate.';
+    return who(mode, i) + ' had ' + article(s.noun) + ' ' + s.noun + ' below the Scottish rate for ' + groupNoun(mode, i) + ': ' + rr.toFixed(2) + ' times that rate.';
   }
   function absLine(mode, setting, i) {
     var v = DATA[mode].abs[setting] ? DATA[mode].abs[setting][i] : undefined;
@@ -118,6 +119,7 @@
     subEl.textContent = d.sub;
     heatmapEl.style.setProperty('--cols', d.cols.length);
     heatmapEl.classList.toggle('has-setting', state.setting !== 'all');
+    heatmapEl.classList.toggle('cols-2', d.cols.length === 2);
 
     var html = '<div class="hm-corner" aria-hidden="true"></div>';
     d.cols.forEach(function (c) { html += '<div class="hm-col" aria-hidden="true">' + c + '</div>'; });
