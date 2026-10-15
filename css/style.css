@@ -248,7 +248,7 @@ li { margin-bottom: 0.45em; }
 .formula { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin-bottom: 8px; }
 .formula > * { min-width: 0; }
 .frac { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; font-weight: 600; font-size: 0.95rem; width: 100%; max-width: 420px; }
-.frac .num, .frac .den { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+.frac .num, .frac .den { min-width: 0; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
 .frac .num { padding: 0 8px 6px; border-bottom: 2px solid var(--navy); }
 .frac .den { padding: 6px 8px 0; color: var(--muted); }
 .eq { font-weight: 800; color: var(--orange-deep); font-size: 1.15rem; }
@@ -339,7 +339,7 @@ thead th { background: var(--navy); color: var(--white); font-weight: 700; }
 th[scope="row"] { font-weight: 500; }
 .t-total th, .t-total td { font-weight: 800; color: var(--navy); }
 .t-group th { background: var(--navy-soft); font-weight: 700; color: var(--navy); }
-.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 thead th.num { text-align: right; }
 
 /* ---------- Interpretation ---------- */
