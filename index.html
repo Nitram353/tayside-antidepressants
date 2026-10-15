@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hospital use among adults prescribed antidepressants in NHS Tayside</title>
+<meta name="description" content="Companion website for a poster presented at the NHS Research Scotland Mental Health Network Annual Scientific Meeting, Edinburgh, 22 October 2026. Explore how hospital use among adults prescribed antidepressants in NHS Tayside compares with the Scottish population.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#0f1d4d">
+<meta property="og:title" content="Hospital use among adults prescribed antidepressants in NHS Tayside">
+<meta property="og:description" content="Younger adults prescribed antidepressants had the greatest relative excess in hospital use compared with Scottish population rates for the same age.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230f1d4d'/%3E%3Crect x='12' y='34' width='10' height='18' rx='2' fill='%23ffffff'/%3E%3Crect x='27' y='22' width='10' height='30' rx='2' fill='%23ef6f4c'/%3E%3Crect x='42' y='12' width='10' height='40' rx='2' fill='%23ffffff'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#explore">Skip to the results</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">Antidepressants &amp; hospital use <span class="brand-sub">NHS Tayside</span></span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#explore">Explore</a>
+      <a href="#comparison">The comparison</a>
+      <a href="#methods">Methods</a>
+      <a href="#figures">Figures</a>
+      <a href="#interpretation">Interpretation</a>
+      <a href="#references">References &amp; contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" aria-labelledby="title">
+  <div class="wrap">
+    <p class="eyebrow">Poster companion · NHS Research Scotland Mental Health Network Annual Scientific Meeting · Royal College of Physicians of Edinburgh · 22 October 2026</p>
+    <h1 id="title">Hospital use among adults prescribed antidepressants in NHS Tayside</h1>
+
+    <div class="keyfinding" role="region" aria-label="Key finding">
+      <p class="kf-label">Key finding</p>
+      <p class="kf-text">Younger adults prescribed antidepressants had the greatest <em>relative</em> excess in hospital use compared with the Scottish population rates for the same age.</p>
+      <p class="kf-detail">Adults aged 16–24 prescribed antidepressants had <strong>6.25 times</strong> the emergency department attendance rate, and <strong>5.42 times</strong> the psychiatric admission rate, of Scottish adults of the same age. Adults aged 75 and over had the highest general acute admission rates, but little excess relative to their age peers.</p>
+    </div>
+
+    <p class="authors"><strong>A Fleming</strong><sup>1</sup>, Dr L Ciaccio<sup>1,2</sup>, Dr C Marwick<sup>1,3</sup>, Dr K Barnett<sup>1,2</sup><br>
+      <span class="affil"><sup>1</sup> University of Dundee · <sup>2</sup> Department of Public Health, NHS Tayside · <sup>3</sup> University of St Andrews</span></p>
+
+    <div class="stats" aria-label="Study at a glance">
+      <div class="stat"><span class="stat-n">68,876</span><span class="stat-l">adults prescribed antidepressants in an average month, about 1 in 5 Tayside adults</span></div>
+      <div class="stat"><span class="stat-n">66.1%</span><span class="stat-l">female</span></div>
+      <div class="stat"><span class="stat-n">+8.3%</span><span class="stat-l">growth in the prescribed population, Jan 2019 to Dec 2023</span></div>
+      <div class="stat"><span class="stat-n">60</span><span class="stat-l">monthly snapshots across three hospital settings</span></div>
+    </div>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="#explore">Explore the results</a>
+      <a class="btn btn-ghost" href="assets/poster-draft.pdf" download>Download the poster (PDF)</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 1. EXPLORE ============================ -->
+<section id="explore" class="section" aria-labelledby="explore-h">
+  <div class="wrap">
+    <p class="section-num">1</p>
+    <h2 id="explore-h">Explore the results</h2>
+    <p class="lead">How does hospital use among adults prescribed antidepressants in Tayside compare with the Scottish population of the same age, or the same sex? Each cell is a <strong>rate ratio</strong>: the Tayside rate divided by the matching Scottish rate. <strong>Tap a cell</strong> for a plain-English explanation.</p>
+
+    <div class="controls">
+      <div class="segmented" role="tablist" aria-label="Comparison">
+        <button type="button" role="tab" id="tab-age" aria-selected="true" data-mode="age">Compare by age</button>
+        <button type="button" role="tab" id="tab-sex" aria-selected="false" data-mode="sex">Compare by sex</button>
+      </div>
+      <div class="chips" role="group" aria-label="Hospital setting">
+        <button type="button" class="chip is-on" data-setting="all" aria-pressed="true">All settings</button>
+        <button type="button" class="chip" data-setting="acute" aria-pressed="false">General acute</button>
+        <button type="button" class="chip" data-setting="ed" aria-pressed="false">Emergency</button>
+        <button type="button" class="chip" data-setting="psych" aria-pressed="false">Psychiatric</button>
+      </div>
+    </div>
+
+    <div class="heatmap-card">
+      <h3 class="hm-title" id="hm-title">Rate ratios by age group</h3>
+      <p class="hm-sub" id="hm-sub">Adults prescribed antidepressants in NHS Tayside vs the Scottish population of the same age, mean of 2019–2023</p>
+      <div id="heatmap" class="heatmap" aria-live="polite"></div>
+      <div class="legend" aria-hidden="true">
+        <span class="legend-low"><i></i> Below 1: lower than the Scottish rate</span>
+        <span class="legend-bar"><i></i><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b><b>6</b></span>
+        <span class="legend-high">Above 1: higher than the Scottish rate</span>
+      </div>
+    </div>
+
+    <div id="explain" class="explain" aria-live="polite"></div>
+
+    <div class="poster-stats">
+      <h3>Also on the poster</h3>
+      <div class="tiles">
+        <div class="tile">
+          <span class="tile-n">41.86</span>
+          <span class="tile-l">general acute admissions per 1,000 adults aged 75+ prescribed antidepressants each month, the highest absolute rate of any age group, yet only <strong>0.92 times</strong> the Scottish rate for this age</span>
+        </div>
+        <div class="tile">
+          <span class="tile-n">Men &gt; women</span>
+          <span class="tile-l">in all three settings, men prescribed antidepressants had higher hospital use and a greater relative excess than women</span>
+        </div>
+        <div class="tile">
+          <span class="tile-n">66% higher</span>
+          <span class="tile-l">emergency attendance rate among adults prescribed antidepressants living in the most deprived areas compared with the least deprived</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 2. COMPARISON ============================ -->
+<section id="comparison" class="section section-alt" aria-labelledby="comparison-h">
+  <div class="wrap">
+    <p class="section-num">2</p>
+    <h2 id="comparison-h">Understand the comparison</h2>
+    <p class="lead">The study reports two kinds of number. They answer different questions, and the headline finding comes from looking at both together.</p>
+
+    <div class="defs">
+      <div class="def">
+        <h3>Absolute rate</h3>
+        <p class="def-big">Hospital contacts per 1,000 adults prescribed antidepressants in the corresponding month</p>
+        <p>This tells you <strong>how much hospital use</strong> there was in a group. It was calculated separately for general acute admissions, emergency department attendances and psychiatric admissions.</p>
+      </div>
+      <div class="def">
+        <h3>Rate ratio</h3>
+        <p class="def-big">That rate divided by the corresponding Scottish population rate</p>
+        <p>This tells you <strong>how much more (or less)</strong> hospital use there was compared with Scottish adults of the same age group, or the same sex.</p>
+      </div>
+    </div>
+
+    <h3>The calculation, step by step</h3>
+    <ol class="steps">
+      <li>
+        <span class="step-n">1</span>
+        <div><strong>Count the hospital contacts</strong> among adults prescribed antidepressants in a given month, for one setting (for example, emergency department attendances).</div>
+      </li>
+      <li>
+        <span class="step-n">2</span>
+        <div><strong>Divide by the number of adults prescribed antidepressants that month</strong> and multiply by 1,000. This is the <em>absolute monthly rate</em>: contacts per 1,000 adults prescribed antidepressants.</div>
+      </li>
+      <li>
+        <span class="step-n">3</span>
+        <div><strong>Divide by the Scottish population rate</strong> for the same group (the same age band, or the same sex). This is the <em>rate ratio</em>. Monthly rate ratios were averaged over the 60 months from January 2019 to December 2023.</div>
+      </li>
+    </ol>
+
+    <div class="formula" aria-label="Rate ratio formula">
+      <div class="frac"><span class="num">Tayside antidepressant‑prescribed population rate</span><span class="den">Corresponding Scottish population rate</span></div>
+      <span class="eq">= Rate ratio</span>
+    </div>
+
+    <h3>How to read a rate ratio</h3>
+    <div class="scale" role="img" aria-label="Rate ratio scale: below 1 means lower use than the Scottish population, 1 means equal rates, above 1 means higher use">
+      <div class="scale-bar"><span class="s-low">Below 1</span><span class="s-one">1</span><span class="s-high">Above 1</span></div>
+      <div class="scale-labels"><span>Lower use than the Scottish population</span><span>Equal rates</span><span>Higher use than the Scottish population</span></div>
+    </div>
+    <p>A rate ratio of 2 means twice the Scottish rate. A rate ratio of 0.9 means 10% below the Scottish rate.</p>
+
+    <div class="callout">
+      <h3>Why both numbers matter</h3>
+      <p>The groups with the <strong>highest absolute rates</strong> were not the groups with the <strong>greatest excess</strong> relative to their peers.</p>
+      <div class="contrast">
+        <div class="contrast-item">
+          <p class="c-who">Adults aged 75 and over</p>
+          <p class="c-abs"><span>41.86</span> general acute admissions per 1,000 per month: the highest of any age group</p>
+          <p class="c-rr"><span>0.92×</span> the Scottish rate for this age group: no excess</p>
+          <p class="c-why">Hospital use rises with age in everyone, so a high absolute rate here is largely what you would expect for this age.</p>
+        </div>
+        <div class="contrast-item">
+          <p class="c-who">Adults aged 16–24</p>
+          <p class="c-abs"><span>12.31</span> general acute admissions per 1,000 per month: the lowest of any age group</p>
+          <p class="c-rr"><span>1.80×</span> the Scottish rate for this age group, rising to <span>6.25×</span> for emergency attendances and <span>5.42×</span> for psychiatric admissions</p>
+          <p class="c-why">Young adults rarely need hospital care, so even modest absolute rates represent a large excess over their peers.</p>
+        </div>
+      </div>
+    </div>
+
+    <details class="more">
+      <summary>Where the Scottish population rates come from</summary>
+      <div class="more-body">
+        <ul>
+          <li><strong>Hospital activity</strong> for the Scottish population was obtained from Public Health Scotland.</li>
+          <li><strong>Population denominators</strong> came from National Records of Scotland mid‑year population estimates.</li>
+          <li><strong>Psychiatric admission counts</strong> were obtained directly from the Public Health Scotland Mental Health Analytical Team, because publicly available psychiatric activity data report discharges rather than admissions.</li>
+          <li>Age‑specific and sex‑specific Scottish rates were calculated and compared with the corresponding rates among adults prescribed antidepressants. The <strong>age and sex comparisons were made separately</strong>: the age comparison does not adjust for sex, and the sex comparison does not adjust for age.</li>
+          <li>No deprivation‑specific Scottish comparator was available, so rate ratios by deprivation quintile could not be calculated.</li>
+          <li>The Scottish comparison population <strong>includes people prescribed antidepressants</strong>, which is likely to make the observed differences smaller than a comparison with people not prescribed antidepressants would be.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ 3. METHODS ============================ -->
+<section id="methods" class="section" aria-labelledby="methods-h">
+  <div class="wrap">
+    <p class="section-num">3</p>
+    <h2 id="methods-h">How we did this study</h2>
+    <p class="lead">A population‑based retrospective observational study using anonymised linked prescribing and hospital activity data for NHS Tayside, Scotland, from 1 January 2019 to 31 December 2023. Tap a step for more detail.</p>
+
+    <ol class="flow">
+      <li class="flow-step">
+        <details>
+          <summary><span class="flow-n">1</span><span class="flow-t">Define the population, month by month</span><span class="flow-s">Adults aged 16 and over, resident in NHS Tayside, with at least one antidepressant prescription in that month</span></summary>
+          <div class="flow-body">
+            <p>For <strong>each calendar month</strong> from January 2019 to December 2023, the study population comprised adults (aged 16 years or over) resident in NHS Tayside who had at least one antidepressant prescription recorded during that month.</p>
+            <p>Eligibility was <strong>reassessed every month</strong>, so the population changed as people started and stopped treatment. This gives 60 monthly snapshots rather than a fixed cohort followed over time. The same person can appear in many months.</p>
+            <p>In an average month the population comprised <strong>68,876 adults</strong>: 45,533 (66.1%) female and 23,343 (33.9%) male. The largest age group was 55–64 (19.3%). The monthly number increased by 8.3% between January 2019 and December 2023, with a transient dip when COVID‑19 restrictions were introduced in March 2020. Growth was greatest among adults aged 75 and over (+24.8%) and those living in the least deprived areas (+20.8%).</p>
+          </div>
+        </details>
+      </li>
+      <li class="flow-step">
+        <details>
+          <summary><span class="flow-n">2</span><span class="flow-t">Link prescribing and hospital records</span><span class="flow-s">Three national hospital datasets linked to prescribing data</span></summary>
+          <div class="flow-body">
+            <p>Prescribing data were linked to three national administrative datasets held by Public Health Scotland:</p>
+            <ul>
+              <li><strong>SMR01</strong>, the Scottish Morbidity Record for general acute inpatient and day‑case activity: used to identify <em>general acute admissions</em>.</li>
+              <li><strong>A&amp;E2</strong>, the Accident and Emergency DataMart: used to identify <em>emergency department attendances</em>.</li>
+              <li><strong>SMR04</strong>, the Scottish Morbidity Record for psychiatric inpatient activity: used to identify <em>psychiatric admissions</em>.</li>
+            </ul>
+            <p>Socioeconomic deprivation was measured with the <strong>Scottish Index of Multiple Deprivation (SIMD)</strong>, an area‑based measure derived from postcode, grouped into quintiles from SIMD1 (most deprived) to SIMD5 (least deprived). SIMD was unavailable for 0.4% of the population where postcode data were missing.</p>
+            <p>Comorbidity burden was assessed with the <strong>Elixhauser Comorbidity Index</strong> (with depression excluded). Because Elixhauser data come from recorded hospital activity, comorbidity analyses were restricted to people with hospital contact.</p>
+          </div>
+        </details>
+      </li>
+      <li class="flow-step">
+        <details>
+          <summary><span class="flow-n">3</span><span class="flow-t">Calculate monthly hospital use rates</span><span class="flow-s">Contacts per 1,000 adults prescribed antidepressants, for each setting, by age, sex and deprivation</span></summary>
+          <div class="flow-body">
+            <p>The primary outcomes were monthly rates of general acute admissions, emergency department attendances and psychiatric admissions. For each setting, hospital use was expressed as the number of contacts per 1,000 adults prescribed antidepressants in the corresponding month.</p>
+            <p>Rates were examined over the five‑year period and stratified by:</p>
+            <ul>
+              <li><strong>Age</strong>: 16–24, 25–34, 35–44, 45–54, 55–64, 65–74 and 75 years or over.</li>
+              <li><strong>Sex</strong>: male and female.</li>
+              <li><strong>Deprivation</strong>: SIMD quintiles 1 (most deprived) to 5 (least deprived).</li>
+            </ul>
+            <p><strong>Statistical tests.</strong> Differences in mean monthly rates between males and females were assessed with paired t‑tests. Differences across age groups and SIMD quintiles were assessed with one‑way analysis of variance (ANOVA), with Tukey post‑hoc tests for pairwise comparisons where appropriate. Statistical significance was defined as p&nbsp;&lt;&nbsp;0.05. Analyses and data visualisation were performed in GraphPad Prism version 11.10.2.</p>
+          </div>
+        </details>
+      </li>
+      <li class="flow-step">
+        <details>
+          <summary><span class="flow-n">4</span><span class="flow-t">Compare with Scottish population rates</span><span class="flow-s">Age‑ and sex‑specific rate ratios</span></summary>
+          <div class="flow-body">
+            <p>To put hospital use in context, rates among adults prescribed antidepressants were compared with the corresponding rates in the wider Scottish population. Scottish hospital activity was obtained from Public Health Scotland, with population denominators from National Records of Scotland mid‑year estimates. Psychiatric admission counts were obtained directly from the Public Health Scotland Mental Health Analytical Team.</p>
+            <p>Age‑specific and sex‑specific population rates were calculated and compared with the corresponding rates among people prescribed antidepressants. A <strong>rate ratio</strong> is the Tayside antidepressant‑prescribed rate divided by the Scottish rate: a value above 1 indicates higher use and a value below 1 indicates lower use. See <a href="#comparison">Understand the comparison</a>.</p>
+          </div>
+        </details>
+      </li>
+    </ol>
+
+    <h3>Analyses not shown on the poster</h3>
+    <div class="accordion">
+      <details class="more">
+        <summary>Reasons for hospital admission</summary>
+        <div class="more-body">
+          <p>Primary reasons for admission were identified from International Classification of Diseases, 10th Revision (ICD‑10) primary diagnosis codes. The most common admission diagnoses were identified for each study year to see how the diagnostic profile of hospital activity changed over time.</p>
+          <p><strong>Common diagnoses</strong> comprised pneumonia (J12–J18), lower respiratory tract infection (J22), COPD exacerbation (J44.1), COVID‑19 (U07.1), chest pain unspecified (R07.4) and other chest pain (R07.3), urinary tract infection (N39.0) and abdominal pain (R10.4).</p>
+          <p><strong>Selected outcomes previously associated with antidepressant use</strong> were also examined: falls (W19), neck of femur fracture (S72.0), syncope (R55), delirium (F05), hyponatraemia (E87.1), gastrointestinal bleeding (K92.0–K92.2), antidepressant poisoning (T43.0–T43.2) and paracetamol poisoning (T39.1). Annual frequencies were examined across the study period.</p>
+          <p><strong>What we found.</strong> The most frequent primary diagnoses were acute medical conditions: respiratory infections, chest pain, urinary tract infections and abdominal pain. This profile was broadly stable across the five years, although respiratory admissions fell during the pandemic and COVID‑19 appeared as a distinct but transient diagnosis. Among the selected outcomes, falls and paracetamol poisoning were the most frequent reasons for admission. Falls and syncope increased over the period, whereas gastrointestinal bleeding and hyponatraemia remained relatively stable. See <a href="#fig3">Figure 3</a>.</p>
+        </div>
+      </details>
+      <details class="more">
+        <summary>Comorbidity (Elixhauser index)</summary>
+        <div class="more-body">
+          <p>Among adults with recorded hospital activity, the mean Elixhauser comorbidity count (excluding depression) was 1.51. Annual mean counts declined between 2019 and 2023 across general acute, emergency and psychiatric settings, with the largest reduction among those admitted to psychiatric care. Because the index is derived from hospital records, this decline may reflect changes in who was admitted or how diagnoses were recorded rather than a true reduction in multimorbidity.</p>
+        </div>
+      </details>
+      <details class="more">
+        <summary>Temporal and seasonal patterns</summary>
+        <div class="more-body">
+          <p>General acute admissions and emergency department attendances accounted for almost all recorded hospital use (48.4% and 49.0% of contacts respectively); psychiatric admissions accounted for 2.6%. General acute and emergency rates fell sharply after COVID‑19 restrictions were introduced in March 2020, recovered from late 2021, but remained below pre‑pandemic levels at the end of 2023. Psychiatric admission rates fluctuated month to month with no clear trend. Seasonal variation was limited: emergency attendances were modestly higher in summer than autumn (p&nbsp;=&nbsp;0.01), with no clear seasonal pattern in the other settings. See <a href="#fig2">Figure 2</a>.</p>
+        </div>
+      </details>
+      <details class="more">
+        <summary>Patient and public involvement, ethics and data governance</summary>
+        <div class="more-body">
+          <p>Patients and members of the public were not involved in the design, conduct, reporting or dissemination plans of this study.</p>
+          <p>Ethics and data governance details: <em>to be confirmed in the final manuscript</em>.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ 4. FIGURES ============================ -->
+<section id="figures" class="section section-alt" aria-labelledby="figures-h">
+  <div class="wrap">
+    <p class="section-num">4</p>
+    <h2 id="figures-h">Figure gallery</h2>
+    <p class="lead">All figures from the manuscript, including those that did not fit on the poster. Tap any figure to enlarge it.</p>
+
+    <h3>Population</h3>
+
+    <figure class="fig" id="table1">
+      <figcaption><span class="fig-n">Table 1.</span> Mean monthly characteristics of adults prescribed antidepressants in NHS Tayside, 2019–2023</figcaption>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">Characteristic</th><th scope="col" class="num">Mean monthly n (%)</th></tr></thead>
+          <tbody>
+            <tr class="t-total"><th scope="row">Adults prescribed antidepressants</th><td class="num">68,876</td></tr>
+            <tr class="t-group"><th scope="row" colspan="2">Sex</th></tr>
+            <tr><th scope="row">Female</th><td class="num">45,533 (66.1)</td></tr>
+            <tr><th scope="row">Male</th><td class="num">23,343 (33.9)</td></tr>
+            <tr class="t-group"><th scope="row" colspan="2">Age group, years</th></tr>
+            <tr><th scope="row">16–24</th><td class="num">5,309 (7.7)</td></tr>
+            <tr><th scope="row">25–34</th><td class="num">9,103 (13.2)</td></tr>
+            <tr><th scope="row">35–44</th><td class="num">10,290 (15.0)</td></tr>
+            <tr><th scope="row">45–54</th><td class="num">12,714 (18.5)</td></tr>
+            <tr><th scope="row">55–64</th><td class="num">13,262 (19.3)</td></tr>
+            <tr><th scope="row">65–74</th><td class="num">9,355 (13.6)</td></tr>
+            <tr><th scope="row">≥75</th><td class="num">8,843 (12.8)</td></tr>
+            <tr class="t-group"><th scope="row" colspan="2">SIMD quintile</th></tr>
+            <tr><th scope="row">SIMD1 (most deprived)</th><td class="num">15,826 (23.0)</td></tr>
+            <tr><th scope="row">SIMD2</th><td class="num">13,481 (19.6)</td></tr>
+            <tr><th scope="row">SIMD3</th><td class="num">13,071 (19.0)</td></tr>
+            <tr><th scope="row">SIMD4</th><td class="num">17,141 (25.0)</td></tr>
+            <tr><th scope="row">SIMD5 (least deprived)</th><td class="num">9,096 (13.2)</td></tr>
+            <tr><th scope="row">SIMD unavailable</th><td class="num">261 (0.4)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fig-note">Values are the mean monthly number and percentage of adults prescribed at least one antidepressant. SIMD, Scottish Index of Multiple Deprivation; unavailable where postcode data were missing. Percentages may not total 100% because of rounding.</p>
+    </figure>
+
+    <figure class="fig" id="fig1">
+      <figcaption><span class="fig-n">Figure 1.</span> Monthly number of adults prescribed antidepressants in NHS Tayside, 2019–2023</figcaption>
+      <button type="button" class="fig-btn" data-src="figures/image1.png" data-alt="Line chart of the monthly number of adults prescribed antidepressants, rising from about 62,500 in January 2019 to about 71,500 by late 2023, with a dip after COVID-19 restrictions in March 2020."><img src="figures/image1.png" loading="lazy" alt="Line chart of the monthly number of adults prescribed antidepressants, rising from about 62,500 in January 2019 to about 71,500 by late 2023, with a dip after COVID-19 restrictions in March 2020."></button>
+      <p class="fig-note">Monthly counts include adults aged 16 and over prescribed at least one antidepressant in each calendar month. The vertical dotted line marks the introduction of COVID‑19 restrictions in March 2020. The population grew by 8.3% overall, with a transient decline in spring 2020, recovery, and a plateau from late 2021.</p>
+    </figure>
+
+    <h3>Trends over time</h3>
+
+    <figure class="fig" id="fig2">
+      <figcaption><span class="fig-n">Figure 2.</span> Temporal trends in hospital use among adults prescribed antidepressants in NHS Tayside, 2019–2023</figcaption>
+      <div class="panels panels-3">
+        <button type="button" class="fig-btn" data-src="figures/image2.png" data-alt="Panel A. Monthly general acute admission rate per 1,000 adults prescribed antidepressants, around 22 to 24 before March 2020, falling to about 12 in spring 2020, then recovering towards 20 to 23."><img src="figures/image2.png" loading="lazy" alt="Panel A. Monthly general acute admission rate per 1,000 adults prescribed antidepressants, around 22 to 24 before March 2020, falling to about 12 in spring 2020, then recovering towards 20 to 23."></button>
+        <button type="button" class="fig-btn" data-src="figures/image3.png" data-alt="Panel B. Monthly emergency department attendance rate per 1,000 adults prescribed antidepressants, around 23 to 27 before March 2020, falling to about 12 in spring 2020, then recovering to around 20 to 23."><img src="figures/image3.png" loading="lazy" alt="Panel B. Monthly emergency department attendance rate per 1,000 adults prescribed antidepressants, around 23 to 27 before March 2020, falling to about 12 in spring 2020, then recovering to around 20 to 23."></button>
+        <button type="button" class="fig-btn" data-src="figures/image4.png" data-alt="Panel C. Monthly psychiatric admission rate per 1,000 adults prescribed antidepressants, fluctuating between about 0.8 and 1.7 with no clear trend."><img src="figures/image4.png" loading="lazy" alt="Panel C. Monthly psychiatric admission rate per 1,000 adults prescribed antidepressants, fluctuating between about 0.8 and 1.7 with no clear trend."></button>
+      </div>
+      <p class="fig-note">Monthly rates per 1,000 adults prescribed antidepressants for (A) general acute admissions, (B) emergency department attendances and (C) psychiatric admissions, using the corresponding monthly prescribed population as the denominator. Vertical dotted lines mark the introduction of COVID‑19 restrictions in March 2020. General acute and emergency rates fell sharply in spring 2020 and had not returned to pre‑pandemic levels by the end of 2023; psychiatric admissions showed no clear trend.</p>
+    </figure>
+
+    <figure class="fig" id="fig3">
+      <figcaption><span class="fig-n">Figure 3.</span> Temporal trends in primary admission diagnoses among adults prescribed antidepressants in NHS Tayside, 2019–2023</figcaption>
+      <div class="panels panels-2">
+        <button type="button" class="fig-btn" data-src="figures/image6.png" data-alt="Panel A heat map. Annual number of admissions for common primary diagnoses: pneumonia, lower respiratory tract infection, COPD exacerbation, COVID-19, chest pain unspecified, other chest pain, urinary tract infection and abdominal pain, 2019 to 2023. Pneumonia and chest pain are consistently high; COVID-19 peaks in 2021 and 2022."><img src="figures/image6.png" loading="lazy" alt="Panel A heat map. Annual number of admissions for common primary diagnoses: pneumonia, lower respiratory tract infection, COPD exacerbation, COVID-19, chest pain unspecified, other chest pain, urinary tract infection and abdominal pain, 2019 to 2023. Pneumonia and chest pain are consistently high; COVID-19 peaks in 2021 and 2022."></button>
+        <button type="button" class="fig-btn" data-src="figures/image5.png" data-alt="Panel B heat map. Annual number of admissions for selected antidepressant-associated adverse outcomes: falls, neck of femur fracture, syncope, delirium, hyponatraemia, GI bleeding, antidepressant poisoning and paracetamol poisoning, 2019 to 2023. Falls increase over time; paracetamol poisoning is consistently frequent; hyponatraemia and GI bleeding are low and stable."><img src="figures/image5.png" loading="lazy" alt="Panel B heat map. Annual number of admissions for selected antidepressant-associated adverse outcomes: falls, neck of femur fracture, syncope, delirium, hyponatraemia, GI bleeding, antidepressant poisoning and paracetamol poisoning, 2019 to 2023. Falls increase over time; paracetamol poisoning is consistently frequent; hyponatraemia and GI bleeding are low and stable."></button>
+      </div>
+      <p class="fig-note">Heat maps show the annual number of admissions for (A) common primary admission diagnoses and (B) selected antidepressant‑associated adverse outcomes, identified from ICD‑10 primary diagnosis codes. Acute medical conditions dominated. Among the selected outcomes, falls and paracetamol poisoning were most frequent; falls and syncope increased over the period while gastrointestinal bleeding and hyponatraemia remained relatively stable. COPD, chronic obstructive pulmonary disease; GI, gastrointestinal; UTI, urinary tract infection.</p>
+    </figure>
+
+    <h3>Differences by sex, age and deprivation</h3>
+
+    <figure class="fig" id="fig4">
+      <figcaption><span class="fig-n">Figure 4.</span> Sex differences in hospital use among adults prescribed antidepressants in NHS Tayside, 2019–2023</figcaption>
+      <div class="panels panels-3">
+        <button type="button" class="fig-btn" data-src="figures/image7.png" data-alt="Panel A. Mean monthly general acute admission rate per 1,000: females about 19.8, males about 22.7, with 95% confidence intervals."><img src="figures/image7.png" loading="lazy" alt="Panel A. Mean monthly general acute admission rate per 1,000: females about 19.8, males about 22.7, with 95% confidence intervals."></button>
+        <button type="button" class="fig-btn" data-src="figures/image8.png" data-alt="Panel B. Mean monthly emergency department attendance rate per 1,000: females about 19.9, males about 23.4."><img src="figures/image8.png" loading="lazy" alt="Panel B. Mean monthly emergency department attendance rate per 1,000: females about 19.9, males about 23.4."></button>
+        <button type="button" class="fig-btn" data-src="figures/image9.png" data-alt="Panel C. Mean monthly psychiatric admission rate per 1,000: females about 0.93, males about 1.51. Note the different x-axis scale."><img src="figures/image9.png" loading="lazy" alt="Panel C. Mean monthly psychiatric admission rate per 1,000: females about 0.93, males about 1.51. Note the different x-axis scale."></button>
+      </div>
+      <p class="fig-note">Mean monthly rates per 1,000 adults prescribed antidepressants for (A) general acute admissions, (B) emergency department attendances and (C) psychiatric admissions. Points are means and error bars are 95% confidence intervals based on 60 monthly observations. Rates were significantly higher among males in all three settings (paired t‑tests, all p&nbsp;&lt;&nbsp;0.0001): 22.7 vs 19.84 general acute admissions, 23.40 vs 19.86 emergency attendances and 1.51 vs 0.93 psychiatric admissions per 1,000 per month. Note the different x‑axis scale in panel C.</p>
+    </figure>
+
+    <figure class="fig" id="fig5">
+      <figcaption><span class="fig-n">Figure 5.</span> Age differences in hospital use among adults prescribed antidepressants in NHS Tayside, 2019–2023</figcaption>
+      <div class="panels panels-3">
+        <button type="button" class="fig-btn" data-src="figures/image11.png" data-alt="Panel A. Mean monthly general acute admission rate per 1,000 by age group, rising steadily from about 12 at ages 16 to 24 to about 42 at ages 75 and over."><img src="figures/image11.png" loading="lazy" alt="Panel A. Mean monthly general acute admission rate per 1,000 by age group, rising steadily from about 12 at ages 16 to 24 to about 42 at ages 75 and over."></button>
+        <button type="button" class="fig-btn" data-src="figures/image12.png" data-alt="Panel B. Mean monthly emergency department attendance rate per 1,000 by age group: highest at ages 16 to 24, falling through middle age to about 17 at ages 55 to 64, then rising again to about 25 at ages 75 and over."><img src="figures/image12.png" loading="lazy" alt="Panel B. Mean monthly emergency department attendance rate per 1,000 by age group: highest at ages 16 to 24, falling through middle age to about 17 at ages 55 to 64, then rising again to about 25 at ages 75 and over."></button>
+        <button type="button" class="fig-btn" data-src="figures/image10.png" data-alt="Panel C. Mean monthly psychiatric admission rate per 1,000 by age group: highest at ages 16 to 24 at about 1.75, falling to about 0.7 at ages 55 to 74, and about 1.0 at ages 75 and over."><img src="figures/image10.png" loading="lazy" alt="Panel C. Mean monthly psychiatric admission rate per 1,000 by age group: highest at ages 16 to 24 at about 1.75, falling to about 0.7 at ages 55 to 74, and about 1.0 at ages 75 and over."></button>
+      </div>
+      <p class="fig-note">Mean monthly rates per 1,000 adults prescribed antidepressants for (A) general acute admissions, (B) emergency department attendances and (C) psychiatric admissions. Points are means and error bars are 95% confidence intervals based on 60 monthly observations. Rates differed significantly across age groups in all three settings (one‑way ANOVA, all p&nbsp;&lt;&nbsp;0.0001). General acute admissions increased with age, from 12.31 per 1,000 at ages 16–24 to 41.86 per 1,000 at 75 and over. Emergency attendances followed a bimodal pattern, highest in the youngest and oldest groups. Psychiatric admissions were highest at ages 16–24 (1.75 per 1,000). Note the different x‑axis scales.</p>
+    </figure>
+
+    <figure class="fig" id="fig6">
+      <figcaption><span class="fig-n">Figure 6.</span> Socioeconomic differences in hospital use among adults prescribed antidepressants in NHS Tayside, 2019–2023</figcaption>
+      <div class="panels panels-3">
+        <button type="button" class="fig-btn" data-src="figures/image13.png" data-alt="Panel A. Mean monthly general acute admission rate per 1,000 by SIMD quintile, from about 18.5 in the least deprived (SIMD5) to about 23.2 in the most deprived (SIMD1)."><img src="figures/image13.png" loading="lazy" alt="Panel A. Mean monthly general acute admission rate per 1,000 by SIMD quintile, from about 18.5 in the least deprived (SIMD5) to about 23.2 in the most deprived (SIMD1)."></button>
+        <button type="button" class="fig-btn" data-src="figures/image14.png" data-alt="Panel B. Mean monthly emergency department attendance rate per 1,000 by SIMD quintile, rising steadily from about 15.9 in the least deprived to about 26.4 in the most deprived."><img src="figures/image14.png" loading="lazy" alt="Panel B. Mean monthly emergency department attendance rate per 1,000 by SIMD quintile, rising steadily from about 15.9 in the least deprived to about 26.4 in the most deprived."></button>
+        <button type="button" class="fig-btn" data-src="figures/image15.png" data-alt="Panel C. Mean monthly psychiatric admission rate per 1,000 by SIMD quintile, from about 0.7 in the least deprived to about 1.5 in the most deprived."><img src="figures/image15.png" loading="lazy" alt="Panel C. Mean monthly psychiatric admission rate per 1,000 by SIMD quintile, from about 0.7 in the least deprived to about 1.5 in the most deprived."></button>
+      </div>
+      <p class="fig-note">Mean monthly rates per 1,000 adults prescribed antidepressants by Scottish Index of Multiple Deprivation (SIMD) quintile for (A) general acute admissions, (B) emergency department attendances and (C) psychiatric admissions. Points are means and error bars are 95% confidence intervals based on 60 monthly observations. Rates differed significantly across quintiles in all three settings (one‑way ANOVA, all p&nbsp;&lt;&nbsp;0.0001). Adults in the most deprived areas had higher rates than those in the least deprived for general acute admissions (23.17 vs 18.46 per 1,000), emergency attendances (26.43 vs 15.88 per 1,000) and psychiatric admissions, where SIMD1 rates were roughly twice those in SIMD5. Note the different x‑axis scales.</p>
+    </figure>
+
+    <h3>Comparison with the Scottish population</h3>
+
+    <figure class="fig" id="fig7">
+      <figcaption><span class="fig-n">Figure 7.</span> Age‑specific hospital use among adults prescribed antidepressants in NHS Tayside relative to the Scottish adult population, 2019–2023</figcaption>
+      <button type="button" class="fig-btn" data-src="figures/image16.png" data-alt="Heat map of mean rate ratios by age group. General acute admissions: 1.80, 1.69, 2.57, 1.13, 0.99, 1.08, 0.92 for ages 16-24 through 75 and over. Emergency department attendances: 6.25, 5.14, 6.31, 2.83, 2.01, 1.57, 0.90. Psychiatric admissions: 5.42, 3.73, 3.49, 2.92, 2.37, 3.03, 2.24."><img src="figures/image16.png" loading="lazy" alt="Heat map of mean rate ratios by age group. General acute admissions: 1.80, 1.69, 2.57, 1.13, 0.99, 1.08, 0.92 for ages 16-24 through 75 and over. Emergency department attendances: 6.25, 5.14, 6.31, 2.83, 2.01, 1.57, 0.90. Psychiatric admissions: 5.42, 3.73, 3.49, 2.92, 2.37, 3.03, 2.24."></button>
+      <p class="fig-note">Mean rate ratios for general acute admissions, emergency department attendances and psychiatric admissions across age groups, calculated by dividing rates among adults prescribed antidepressants in NHS Tayside by the corresponding age‑specific rates in the Scottish adult population. Values above 1 indicate higher use and values below 1 lower use than the Scottish population. The largest excess was in younger adults, particularly for emergency and psychiatric care. <a href="#explore">Explore this figure interactively</a>.</p>
+    </figure>
+
+    <figure class="fig" id="fig8">
+      <figcaption><span class="fig-n">Figure 8.</span> Sex‑specific hospital use among adults prescribed antidepressants in NHS Tayside relative to the Scottish adult population, 2019–2023</figcaption>
+      <button type="button" class="fig-btn fig-btn-narrow" data-src="figures/image17.png" data-alt="Heat map of mean rate ratios by sex. General acute admissions: males 1.27, females 1.07. Emergency department attendances: males 2.53, females 2.09. Psychiatric admissions: males 3.88, females 2.77."><img src="figures/image17.png" loading="lazy" alt="Heat map of mean rate ratios by sex. General acute admissions: males 1.27, females 1.07. Emergency department attendances: males 2.53, females 2.09. Psychiatric admissions: males 3.88, females 2.77."></button>
+      <p class="fig-note">Mean rate ratios among males and females, calculated by dividing rates among adults prescribed antidepressants in NHS Tayside by the corresponding sex‑specific rates in the Scottish adult population. The relative excess was consistently greater among males, with the largest sex difference for psychiatric admissions. <a href="#explore">Explore this figure interactively</a>.</p>
+    </figure>
+  </div>
+</section>
+
+<!-- ============================ 5. INTERPRETATION ============================ -->
+<section id="interpretation" class="section" aria-labelledby="interp-h">
+  <div class="wrap">
+    <p class="section-num">5</p>
+    <h2 id="interp-h">Interpretation &amp; limitations</h2>
+    <p class="lead">What the findings suggest, why they matter, and what they can and cannot tell us.</p>
+
+    <h3>What the findings suggest</h3>
+    <ul class="bullets">
+      <li><strong>Absolute burden and relative excess point to different groups.</strong> Older adults had the highest general acute admission rates, but younger adults had the greatest excess compared with their age‑matched peers. In adults aged 75 and over, general acute and emergency rates were similar to, or slightly below, Scottish rates for that age.</li>
+      <li><strong>The excess in young adults was concentrated in emergency and psychiatric care.</strong> Adults aged 16–24 had roughly six times the emergency attendance rate and five times the psychiatric admission rate of their peers. This may reflect the onset or escalation of psychiatric illness in the transition to adulthood, when acute distress, self‑harm and substance misuse can precipitate emergency presentation, but these mechanisms could not be tested with aggregate data.</li>
+      <li><strong>Men had higher use and a greater relative excess than women in every setting</strong>, most strikingly for psychiatric admissions (3.88 vs 2.77 times the Scottish rate). Lower help‑seeking and later presentation among men, higher chronic disease burden, and sex differences in how mental illness presents are plausible contributors, but remain hypotheses.</li>
+      <li><strong>Hospital use rose steadily with area deprivation</strong> across all three settings, consistent with the established link between socioeconomic disadvantage and poorer mental and physical health.</li>
+      <li><strong>Most admissions were for common acute medical conditions</strong> rather than outcomes specifically linked to antidepressants. Adults prescribed antidepressants are a clinically diverse group whose hospital needs extend well beyond psychiatric care.</li>
+    </ul>
+
+    <h3>Why it matters</h3>
+    <p>Absolute rates show <strong>where demand is greatest</strong>; relative rates identify <strong>groups whose use exceeds what would be expected for their age or sex</strong>. The two have different implications for planning services. High absolute general acute admission rates in older adults point to medication review, falls prevention and coordinated management of multimorbidity. The large relative excess in younger adults suggests that routine antidepressant review in this group could extend beyond treatment response and side effects to include self‑harm and substance misuse risk, physical health, continuity of mental healthcare and barriers to planned support. The pattern in men raises the question of whether follow‑up pathways engage men effectively before needs escalate to crisis, and the deprivation gradient indicates that prescribing decisions alone are unlikely to address the wider drivers of hospital use.</p>
+
+    <div class="can-cannot">
+      <div class="can">
+        <h3>What we can conclude</h3>
+        <ul>
+          <li>Hospital use among adults prescribed antidepressants in NHS Tayside varied substantially by age, sex and deprivation across general acute, emergency and psychiatric settings.</li>
+          <li>Relative to the Scottish population of the same age, the excess was greatest in younger adults and smallest, or absent, in the oldest.</li>
+          <li>Men prescribed antidepressants had higher absolute and relative hospital use than women.</li>
+          <li>Antidepressant prescribing identifies a population in whom underlying mental, physical and social needs may be concentrated.</li>
+        </ul>
+      </div>
+      <div class="cannot">
+        <h3>What we cannot conclude</h3>
+        <ul>
+          <li><strong>That antidepressants caused higher hospital use.</strong> The design is observational and descriptive. The excess may reflect the underlying illness being treated, chronic pain, physical multimorbidity, deprivation and other differences between the populations.</li>
+          <li><strong>That an individual on antidepressants is more likely to be admitted.</strong> Rates count contacts, not people: a higher rate could mean more people using hospitals, repeated contacts by a smaller group, or both.</li>
+          <li><strong>How much of the excess would remain after adjustment.</strong> The data could not adjust for indication, severity, antidepressant type or dose, treatment duration, other medicines or individual comorbidity, and age and sex were compared separately rather than together.</li>
+          <li><strong>That the comparison is with people not taking antidepressants.</strong> The Scottish population includes people prescribed antidepressants, which is likely to make the differences appear smaller than they would be against an untreated group.</li>
+        </ul>
+      </div>
+    </div>
+
+    <details class="more">
+      <summary>Strengths and limitations in more detail</summary>
+      <div class="more-body">
+        <p><strong>Strengths.</strong> The study used linked, routinely collected prescribing and hospital data with population‑wide coverage across NHS Tayside. Five years of monthly rates span the period before, during and after the acute disruption of the COVID‑19 pandemic. Three national hospital datasets captured general acute, emergency and psychiatric care within one framework. Monthly denominators reflected the population actually prescribed antidepressants in each month, and stratification revealed heterogeneity that an overall rate would hide. Benchmarking against population rates identified groups whose hospital use was disproportionately high for their age or sex.</p>
+        <p><strong>Limitations.</strong></p>
+        <ul>
+          <li>The observational, descriptive design precludes causal inference. Results should not be read as showing that antidepressants caused hospitalisation.</li>
+          <li>No adjustment was possible for prescribing indication, severity of mental illness, antidepressant class or dose, treatment duration, adherence, concomitant medicines or individual comorbidity.</li>
+          <li>Analyses used aggregated monthly rates rather than following individuals. The same person can appear in many months and have several contacts, so monthly observations are not fully independent and the statistical certainty of group differences may be overstated.</li>
+          <li>Elixhauser comorbidity counts were available only for people with hospital contact and depend on how diagnoses were coded. The decline over time may reflect changes in who was admitted or in recording rather than less multimorbidity.</li>
+          <li>The comparison populations are not geographically equivalent (Tayside vs all of Scotland), and the Scottish comparator includes people prescribed antidepressants. Age and sex were compared separately, without simultaneous adjustment for age, sex, deprivation and comorbidity. No deprivation‑specific Scottish comparator was available.</li>
+          <li>Selected antidepressant‑associated outcomes were identified from primary diagnosis codes only; admissions where they were recorded as secondary diagnoses would be missed.</li>
+          <li>SIMD is an area‑level measure and may not reflect individual circumstances.</li>
+          <li>The COVID‑19 pandemic disrupted service access, admission thresholds, health‑seeking behaviour and capacity, so changes between 2020 and 2023 cannot be attributed solely to changes in clinical need.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="more">
+      <summary>How this compares with other studies</summary>
+      <div class="more-body">
+        <ul>
+          <li>The 8.3% rise in the prescribed population is consistent with sustained global growth in antidepressant use over the past decade. The predominance of women matches European prescribing patterns and the higher recorded prevalence of depression among women.</li>
+          <li>The largest relative growth in prescribing was in adults aged 75 and over, even though this group showed no excess hospital use relative to their peers. Growth in the treated population should not be read as evidence of rising morbidity or excess hospital use in that group.</li>
+          <li>Earlier studies of older adults reported increased admissions among antidepressant users, but they compared exposed with unexposed older adults, or treatment phases within a population already experiencing polypharmacy. Here the comparator was the whole age‑matched Scottish population, so near‑unity rate ratios in the oldest group indicate little excess relative to an already high baseline, not low need.</li>
+          <li>The sixfold excess in emergency attendance and fivefold excess in psychiatric admission at ages 16–24 accords with Scotland‑wide evidence that children and adolescents receiving antidepressants had twice the risk of all‑cause hospitalisation of their peers, and extends that pattern into early adulthood.</li>
+          <li>Paracetamol poisoning was more frequent than antidepressant poisoning, suggesting that hospital use in this population may reflect underlying self‑harm risk and wider psychosocial vulnerability rather than direct antidepressant toxicity alone.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="more">
+      <summary>What should happen next</summary>
+      <div class="more-body">
+        <ul>
+          <li>Individual patient‑level studies with a comparison group of adults <em>not</em> prescribed antidepressants, to test whether the excess persists after adjustment for indication, illness severity, comorbidity and deprivation.</li>
+          <li>Longitudinal follow‑up to see how hospital use changes after antidepressants are started, changed or stopped.</li>
+          <li>Analyses of first and repeat contacts, the diagnoses attached to each, and transitions between general acute, emergency and psychiatric care, to learn whether a small group of frequent users drives the aggregate pattern.</li>
+          <li>Qualitative work with younger adults and men prescribed antidepressants to identify barriers to preventive care and the routes that lead to crisis or emergency presentation.</li>
+          <li>Using the age, sex and deprivation patterns described here to guide service planning, and prospectively evaluating more integrated follow‑up in the groups with the highest use.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ============================ 6. REFERENCES & CONTACT ============================ -->
+<section id="references" class="section section-alt" aria-labelledby="refs-h">
+  <div class="wrap">
+    <p class="section-num">6</p>
+    <h2 id="refs-h">References, data sources &amp; contact</h2>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>Questions or research interest?</h3>
+        <p>Contact Anna Fleming, University of Dundee.</p>
+        <a class="btn btn-primary" href="mailto:2558332@dundee.ac.uk?subject=Hospital%20use%20among%20adults%20prescribed%20antidepressants%20%28NHS%20Tayside%29">Email 2558332@dundee.ac.uk</a>
+      </div>
+      <div class="contact-card">
+        <h3>Poster</h3>
+        <p>Presented at the NHS Research Scotland Mental Health Network Annual Scientific Meeting, Royal College of Physicians of Edinburgh, 22 October 2026.</p>
+        <a class="btn btn-ghost" href="assets/poster-draft.pdf" download>Download the poster (PDF)</a>
+      </div>
+    </div>
+
+    <h3>Data sources</h3>
+    <ul class="bullets">
+      <li><strong>Prescribing</strong>: antidepressant prescriptions for NHS Tayside residents, January 2019 to December 2023.</li>
+      <li><strong>General acute admissions</strong>: Scottish Morbidity Record 01 (SMR01), general acute inpatient and day‑case activity, Public Health Scotland.</li>
+      <li><strong>Emergency department attendances</strong>: Accident and Emergency DataMart (A&amp;E2), Public Health Scotland.</li>
+      <li><strong>Psychiatric admissions</strong>: Scottish Morbidity Record 04 (SMR04), mental health inpatient and day‑case activity, Public Health Scotland.</li>
+      <li><strong>Deprivation</strong>: Scottish Index of Multiple Deprivation 2020.</li>
+      <li><strong>Scottish population hospital activity</strong>: Public Health Scotland (acute hospital activity, accident and emergency open data, and psychiatric admission counts from the Mental Health Analytical Team).</li>
+      <li><strong>Scottish population estimates</strong>: National Records of Scotland mid‑year population estimates.</li>
+      <li><strong>Diagnoses</strong>: ICD‑10 primary diagnosis codes. <strong>Comorbidity</strong>: Elixhauser Comorbidity Index.</li>
+    </ul>
+
+    <details class="more" id="reflist">
+      <summary>Full reference list (41)</summary>
+      <div class="more-body">
+        <ol class="refs">
+          <li>Scottish Government. Quality prescribing for antidepressants: guide for improvement 2024 to 2027. Edinburgh; 2024.</li>
+          <li>Woodall A, Walker L. A guide to prescribing antidepressants in primary care. Prescriber. 2022;33(8-9):11–8.</li>
+          <li>Public Health Scotland. Medicines used in mental health: years between 2010 to 2011 and 2019 to 2020. Edinburgh; 2021.</li>
+          <li>Peano A, Calabrese F, Pechlivanidis K, Mimmo R, Politano GMM, Martella M, et al. International trends in antidepressant consumption: a 10-year comparative analysis (2010–2020). The Psychiatric Quarterly. 2025;96:241–55.</li>
+          <li>Moore M, Yuen HM, Dunn N, Mullee MA, Maskell J, Kendrick T. Explaining the rise in antidepressant prescribing: a descriptive study using the general practice research database. BMJ. 2009;339:b3999.</li>
+          <li>Mars B, Heron J, Kessler D, Davies NM, Martin RM, Thomas KH, et al. Influences on antidepressant prescribing trends in the UK: 1995–2011. Social Psychiatry and Psychiatric Epidemiology. 2017;52(2):193–200.</li>
+          <li>Coupland C, Dhiman P, Morriss R, Arthur A, Barton G, Hippisley-Cox J. Antidepressant use and risk of adverse outcomes in older people: population based cohort study. BMJ. 2011;343:d4551.</li>
+          <li>Li Y, Hang L-W, Muo C-H, Chen PC. Dose of selective serotonin reuptake inhibitors and risk of upper gastrointestinal bleeding in older adults. Authorea. 2024.</li>
+          <li>Gandhi S, Shariff SZ, Al-Jaishi A, Reiss JP, Mamdani MM, Hackam DG, et al. Second-generation antidepressants and hyponatremia risk: a population-based cohort study of older adults. American Journal of Kidney Diseases. 2017;69(1):87–96.</li>
+          <li>Wang Y, Fahmi A, Woodall A, Ashcroft DM, Sperrin M, van Staa TP. Association between phases of antidepressant treatment and hospital admission for older adults in English primary care: matched case–control study. The British Journal of Psychiatry. 2026:1–8.</li>
+          <li>Redican E, McDowell R, Rosato M, Murphy J, Leavey G. Patterns of antidepressant prescribing and health-related outcomes among older adults in Northern Ireland: an administrative data study. Aging &amp; Mental Health. 2025;29(2):291–8.</li>
+          <li>Minoc E-M, Villain C, Chrétien B, Benbrika S, Heraudeau M, Lafont C, et al. Association between antidepressant drugs and falls in older adults: a mediation analysis in the World Health Organization's pharmacovigilance database. Therapies. 2025;80(5):561–71.</li>
+          <li>Public Health Scotland. Acute hospital activity and NHS beds information (annual). Edinburgh; 2024.</li>
+          <li>Public Health Scotland. Mental health inpatient activity. Edinburgh; 2024.</li>
+          <li>Public Health Scotland. Accident and emergency: downloads and open data. Edinburgh; 2025.</li>
+          <li>Public Health Scotland. General Acute Inpatient and Day Case – Scottish Morbidity Record (SMR01). Edinburgh; 2026.</li>
+          <li>Public Health Scotland. Accident and Emergency Data Mart (A&amp;E2). Edinburgh; 2026.</li>
+          <li>Public Health Scotland. Mental Health Inpatient and Day Case – Scottish Morbidity Record (SMR04). Edinburgh; 2026.</li>
+          <li>Public Health Scotland. Scottish Index of Multiple Deprivation 2020: introduction. Edinburgh; 2020.</li>
+          <li>Elixhauser A, Steiner C, Harris D, Coffey R. Comorbidity measures for use with administrative data. Medical Care. 1998;36(1):8–27.</li>
+          <li>World Health Organization. International statistical classification of diseases and related health problems, 10th revision, fifth edition, 2016. Geneva: World Health Organization; 2015.</li>
+          <li>van den Brand MWM, Samson MM, Pouwels S, van Staa TP, Thio B, Cooper C, et al. Use of anti-depressants and the risk of fracture of the hip or femur. Osteoporosis International. 2009;20(10):1705–13.</li>
+          <li>Bhangu JS, King-Kallimanis B, Cunningham C, Kenny RA. The relationship between syncope, depression and anti-depressant use in older adults. Age and Ageing. 2014;43(4):502–9.</li>
+          <li>Minoc E-M, Villain C, Benbrika S, Chrétien B, Descatoire P, Heraudeau M, et al. Association between antidepressant use and delirium in older adults: an analysis of the World Health Organization's global pharmacovigilance database. BMC Geriatrics. 2024;24(1):600.</li>
+          <li>Leth-Møller KB, Hansen AH, Torstensson M, Andersen SE, Ødum L, Gislasson G, et al. Antidepressants and the risk of hyponatremia: a Danish register-based population study. BMJ Open. 2016;6(5):e011200.</li>
+          <li>Hawton K, Bergen H, Simkin S, Cooper J, Waters K, Gunnell D, et al. Toxicity of antidepressants: rates of suicide relative to prescribing and non-fatal overdose. British Journal of Psychiatry. 2010;196(5):354–8.</li>
+          <li>Coupland C, Hill T, Morriss R, Arthur A, Moore M, Hippisley-Cox J. Antidepressant use and risk of suicide and attempted suicide or self harm in people aged 20 to 64: cohort study using a primary care database. BMJ. 2015;350:h517.</li>
+          <li>Casey D, Geulayov G, Bale E, Brand F, Clements C, Kapur N, et al. Paracetamol self-poisoning: epidemiological study of trends and patient characteristics from the multicentre study of self-harm in England. Journal of Affective Disorders. 2020;276:699–706.</li>
+          <li>National Records of Scotland. Population estimates time series data. Edinburgh; 2026.</li>
+          <li>Shah SA, Mulholland RH, Wilkinson S, Katikireddi SV, Pan J, Shi T, et al. Impact on emergency and elective hospital-based care in Scotland over the first 12 months of the pandemic: interrupted time-series analysis of national lockdowns. Journal of the Royal Society of Medicine. 2022;115(11):429–38.</li>
+          <li>Boyd A, Van de Velde S, Pivette M, ten Have M, Florescu S, O'Neill S, et al. Gender differences in psychotropic use across Europe: results from a large cross-sectional, population-based study. European Psychiatry. 2015;30(6):778–88.</li>
+          <li>Seidler ZE, Dawes AJ, Rice SM, Oliffe JL, Dhillon HM. The role of masculinity in men's help-seeking for depression: a systematic review. Clinical Psychology Review. 2016;49:106–18.</li>
+          <li>Martin S, Zajac I, Vincent A, Adams RJ, Appleton S, Wittert GA. Effect of depression on health service utilisation in men: a prospective cohort study of Australian men aged 35 to 80 years. BMJ Open. 2021;11(3):e044893.</li>
+          <li>Patwardhan V, Gil GF, Arrieta A, Cagney J, DeGraw E, Herbert ME, et al. Differences across the lifespan between females and males in the top 20 causes of disease burden globally: a systematic analysis of the Global Burden of Disease Study 2021. The Lancet Public Health. 2024;9(5):e282–e94.</li>
+          <li>Byrnes JP, Miller DC, Schafer WD. Gender differences in risk taking: a meta-analysis. Psychological Bulletin. 1999;125(3).</li>
+          <li>Galdas PM, Cheater F, Marshall P. Men and health help-seeking behaviour: literature review. Journal of Advanced Nursing. 2005;49(6):616–23.</li>
+          <li>Martin LA, Neighbors HW, Griffith DM. The experience of symptoms of depression in men vs women: analysis of the National Comorbidity Survey Replication. JAMA Psychiatry. 2013;70(10):1100–6.</li>
+          <li>Walker S, Mackay E, Barnett P, Sheridan Rains L, Leverton M, Dalton-Locke C, et al. Clinical and social factors associated with increased risk for involuntary psychiatric hospitalisation: a systematic review, meta-analysis, and narrative synthesis. The Lancet Psychiatry. 2019;6(12):1039–53.</li>
+          <li>Fleming M, Fitton CA, Steiner MFC, McLay JS, Clark D, King A, et al. Educational and health outcomes of children and adolescents receiving antidepressant medication: Scotland-wide retrospective record linkage cohort study of 766 237 schoolchildren. International Journal of Epidemiology. 2020;49(4):1380–91.</li>
+          <li>Solmi M, Radua J, Olivola M, Croce E, Soardo L, Salazar de Pablo G, et al. Age at onset of mental disorders worldwide: large-scale meta-analysis of 192 epidemiological studies. Molecular Psychiatry. 2022;27(1):281–95.</li>
+          <li>Jespersen A, Madden RA, Whalley HC, Reynolds RM, Lawrie SM, McIntosh AM, et al. Socioeconomic status and depression: a systematic review. Epidemiologic Reviews. 2025;47(1).</li>
+        </ol>
+      </div>
+    </details>
+
+    <div class="share">
+      <img src="assets/qr.svg" alt="QR code linking to this website" width="120" height="120">
+      <div>
+        <p><strong>Share this page</strong><br>Scan the code or visit <a href="https://nitram353.github.io/tayside-antidepressants/">nitram353.github.io/tayside-antidepressants</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Draft companion site for a poster under review. Values are taken from the draft manuscript and may change before final presentation.</p>
+    <p>© 2026 A Fleming, University of Dundee. Analyses performed with anonymised, routinely collected NHS data.</p>
+  </div>
+</footer>
+
+<dialog id="lightbox" class="lightbox" aria-label="Enlarged figure">
+  <button type="button" class="lb-close" id="lb-close" aria-label="Close">×</button>
+  <img id="lb-img" src="" alt="">
+</dialog>
+
+<script src="js/app.js"></script>
+</body>
+</html>
