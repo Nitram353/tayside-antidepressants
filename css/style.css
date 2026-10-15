@@ -246,7 +246,8 @@ li { margin-bottom: 0.45em; }
 .step-n { flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--navy); color: var(--white); font-weight: 800; display: grid; place-items: center; }
 
 .formula { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14px; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin-bottom: 8px; }
-.frac { display: inline-flex; flex-direction: column; align-items: center; text-align: center; font-weight: 600; font-size: 0.95rem; }
+.frac { display: inline-flex; flex-direction: column; align-items: center; text-align: center; font-weight: 600; font-size: 0.95rem; max-width: 100%; }
+.frac .num, .frac .den { max-width: 100%; overflow-wrap: anywhere; }
 .frac .num { padding: 0 8px 6px; border-bottom: 2px solid var(--navy); }
 .frac .den { padding: 6px 8px 0; color: var(--muted); }
 .eq { font-weight: 800; color: var(--orange-deep); font-size: 1.15rem; }
