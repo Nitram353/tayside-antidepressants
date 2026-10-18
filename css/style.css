@@ -185,7 +185,13 @@ li { margin-bottom: 0.45em; }
 }
 .hm-cell:hover { transform: scale(1.05); z-index: 1; }
 .hm-cell:focus-visible { outline: 3px solid var(--orange-deep); z-index: 2; }
-.hm-cell.is-selected { box-shadow: 0 0 0 3px var(--white), 0 0 0 6px var(--navy); z-index: 2; }
+.hm-cell.is-selected { box-shadow: 0 0 0 3px var(--white), 0 0 0 6px var(--navy); z-index: 2; transform: scale(1.06); }
+.hm-cell.is-selected::after {
+  content: ""; position: absolute; left: 50%; bottom: -14px; width: 0; height: 0; transform: translateX(-50%);
+  border-left: 9px solid transparent; border-right: 9px solid transparent; border-bottom: 9px solid var(--orange);
+}
+.hm-detail { grid-column: 1 / -1; margin: 10px 0 12px; }
+.heatmap.has-setting .hm-row-dim .hm-cell:hover { opacity: 0.7; }
 .heatmap.has-setting .hm-row-dim .hm-cell { opacity: 0.28; }
 .heatmap.has-setting .hm-row-dim .hm-label { opacity: 0.45; }
 .heatmap.has-setting .hm-row-on .hm-label { color: var(--orange-deep); }
@@ -212,8 +218,9 @@ li { margin-bottom: 0.45em; }
 /* ---------- Explanation card ---------- */
 .explain {
   margin-top: 16px; background: var(--peach); border-radius: var(--radius); padding: 18px 20px;
-  border-left: 8px solid var(--orange);
+  border-left: 8px solid var(--orange); border-top: 3px solid var(--orange);
 }
+@media (max-width: 640px) { .explain { padding: 14px 14px 14px 16px; } .ex-rr { font-size: 2rem; } }
 .ex-tag { display: inline-block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--orange-deep); margin-bottom: 6px; }
 .ex-top { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
 .ex-rr { font-size: 2.4rem; font-weight: 800; color: var(--navy); line-height: 1; letter-spacing: -0.02em; }
@@ -279,6 +286,8 @@ li { margin-bottom: 0.45em; }
 
 /* ---------- Details / expandables ---------- */
 details.more { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-s); margin-bottom: 10px; }
+details.more-inline { background: var(--surface); margin-top: 12px; }
+.authors-list li { margin-bottom: 0.6em; }
 details.more summary {
   cursor: pointer; font-weight: 700; color: var(--navy); padding: 14px 44px 14px 16px; list-style: none; position: relative;
   min-height: 48px; display: flex; align-items: center;

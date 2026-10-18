@@ -23,9 +23,9 @@
       },
       /* Absolute mean monthly rates per 1,000 where the manuscript text states them exactly. */
       abs: {
-        acute: { 0: 12.31, 6: 41.86 },
-        ed:    { 6: 25.00 },
-        psych: { 0: 1.75 }
+        acute: { 0: '12.31', 6: '41.86' },
+        ed:    { 0: '28.8', 6: '25.00' },
+        psych: { 0: '1.75' }
       },
       defaultCell: { setting: 'ed', i: 0 }
     },
@@ -40,9 +40,9 @@
         psych: [3.88, 2.77]
       },
       abs: {
-        acute: { 0: 22.7, 1: 19.84 },
-        ed:    { 0: 23.40, 1: 19.86 },
-        psych: { 0: 1.51, 1: 0.93 }
+        acute: { 0: '22.7', 1: '19.84' },
+        ed:    { 0: '23.40', 1: '19.86' },
+        psych: { 0: '1.51', 1: '0.93' }
       },
       defaultCell: { setting: 'psych', i: 0 }
     }
@@ -53,7 +53,6 @@
   var state = { mode: 'age', setting: 'all', sel: null };
 
   var heatmapEl = document.getElementById('heatmap');
-  var explainEl = document.getElementById('explain');
   var titleEl = document.getElementById('hm-title');
   var subEl = document.getElementById('hm-sub');
 
@@ -73,6 +72,7 @@
   function timesWord(n) { return n === 2 ? 'twice' : (WORDS[n] || n) + ' times'; }
   function plainWords(rr) {
     if (rr < 1) return Math.round((1 - rr) * 100) + '% lower than the Scottish rate';
+    if (rr < 1.005) return 'the same as the Scottish rate';
     if (rr < 2) return Math.round((rr - 1) * 100) + '% higher than the Scottish rate';
     var n = Math.floor(rr), f = rr - n;
     if (f <= 0.15) return 'about ' + timesWord(n) + ' the Scottish rate';
@@ -93,23 +93,16 @@
     if (mode === 'age') return 'this age group';
     return i === 0 ? 'men' : 'women';
   }
-  function article(word) { return /^[aeiou]/i.test(word) ? 'an' : 'a'; }
   function sentence(mode, setting, i) {
     var rr = DATA[mode].rr[setting][i];
     var s = SETTINGS[setting];
-    if (rr >= 0.85 && rr <= 1.1) {
-      return who(mode, i) + ' had ' + article(s.noun) + ' ' + s.noun + ' close to the Scottish rate for ' + groupNoun(mode, i) + ': ' + rr.toFixed(2) + ' times that rate.';
-    }
-    if (rr > 1.1) {
-      return who(mode, i) + ' had ' + rr.toFixed(2) + ' times the ' + s.noun + ' of ' + comparator(mode, i) + '.';
-    }
-    return who(mode, i) + ' had ' + article(s.noun) + ' ' + s.noun + ' below the Scottish rate for ' + groupNoun(mode, i) + ': ' + rr.toFixed(2) + ' times that rate.';
+    return who(mode, i) + ' had ' + rr.toFixed(2) + ' times the ' + s.noun + ' of ' + comparator(mode, i) + '.';
   }
   function absLine(mode, setting, i) {
     var v = DATA[mode].abs[setting] ? DATA[mode].abs[setting][i] : undefined;
     if (v === undefined) return '';
     var g = mode === 'age' ? 'adults aged ' + DATA.age.colLong[i] : (i === 0 ? 'men' : 'women');
-    return '<p class="ex-abs"><strong>Absolute rate:</strong> ' + v.toFixed(2) + ' ' + SETTINGS[setting].unit + ' per 1,000 ' + g + ' prescribed antidepressants, per month (mean of 2019–2023).</p>';
+    return '<p class="ex-abs"><strong>Absolute rate:</strong> ' + v + ' ' + SETTINGS[setting].unit + ' per 1,000 ' + g + ' prescribed antidepressants, per month (mean of 2019–2023).</p>';
   }
 
   /* ---------- render ---------- */
@@ -137,23 +130,23 @@
           ' aria-label="' + SETTINGS[key].label + ', ' + d.colLong[i] + ': rate ratio ' + rr.toFixed(2) + '">' +
           rr.toFixed(2) + '</button>';
       });
+      if (state.sel && state.sel.setting === key) {
+        html += '<div class="explain hm-detail" role="status" style="--sel-col:' + (state.sel.i + 1) + '">' + explainHtml(key, state.sel.i) + '</div>';
+      }
       html += '</div>';
     });
     heatmapEl.innerHTML = html;
-    renderExplain();
   }
 
-  function renderExplain() {
-    if (!state.sel) { explainEl.innerHTML = ''; return; }
-    var mode = state.mode, setting = state.sel.setting, i = state.sel.i;
+  function explainHtml(setting, i) {
+    var mode = state.mode;
     var d = DATA[mode];
     var rr = d.rr[setting][i];
     var tag = SETTINGS[setting].label + ' · ' + (mode === 'age' ? 'Ages ' + d.colLong[i] : d.colLong[i]);
-    explainEl.innerHTML =
-      '<span class="ex-tag">' + tag + '</span>' +
+    return '<span class="ex-tag">' + tag + '</span>' +
       '<div class="ex-top"><span class="ex-rr">' + rr.toFixed(2) + '<small>× the Scottish rate</small></span></div>' +
       '<p class="ex-sentence">' + sentence(mode, setting, i) + '</p>' +
-      '<p class="ex-plain">In plain terms: ' + plainWords(rr) + '.</p>' +
+      '<p class="ex-plain">That is ' + plainWords(rr) + '.</p>' +
       absLine(mode, setting, i) +
       '<p class="ex-note">Rates count hospital contacts per 1,000 people per month, not individuals. The comparison does not show that antidepressants caused the difference: see <a href="#interpretation">Interpretation &amp; limitations</a>.</p>';
   }
@@ -169,6 +162,13 @@
     render();
     var selected = heatmapEl.querySelector('.hm-cell.is-selected');
     if (selected) selected.focus({ preventScroll: true });
+    var detail = heatmapEl.querySelector('.hm-detail');
+    if (detail) {
+      var r = detail.getBoundingClientRect();
+      if (r.bottom > window.innerHeight || r.top < 0) {
+        try { detail.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } catch (err) { detail.scrollIntoView(false); }
+      }
+    }
   });
 
   function setSetting(key, silent) {
